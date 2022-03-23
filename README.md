@@ -1,9 +1,6 @@
 <div id="header" align="center">
   <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
 </div>
-<div id="bages" align="center">
-  <img src="https://komarev.com/ghpvc/?Xemay&style=flat-square&color=blue" alt=""/>
-</div>
 
 ---
 
@@ -27,8 +24,6 @@ Hello ✋, I am beginner python developer
 
 ### 📖 My statistics
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=Xemay&theme=dark&background=000000)](https://git.io/streak-stats)
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Xemay)](https://github.com/anuraghazra/github-readme-stats)
   
 <!---
 Xemay/Xemay is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
