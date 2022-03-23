@@ -1,9 +1,35 @@
-- 👋 Hi, I’m @Xemay
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning Python
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
+</div>
+<div id="bages" align="center">
+  <img src="https://komarev.com/ghpvc/?Xemay&style=flat-square&color=blue" alt=""/>
+</div>
 
+---
+
+### :man_technologist: About Me :
+Hello ✋, I am beginner python developer
+- Working in [AnvilDev team](https://github.com/Anvilteam)
+- Сurrently developing [Floory](https://github.com/Anvilteam/Floory) - discord bot
+- I also plan to study javascript
+
+---
+
+### :hammer_and_wrench: Languages and Tools :
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg" title="Pycharm" alt="Pycharm" width"40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original.svg" title="MySQL" alt="MySQL" width"40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
+</div>
+
+---
+
+### 📖 My statistics
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=Xemay&theme=dark&background=000000)](https://git.io/streak-stats)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Xemay)](https://github.com/anuraghazra/github-readme-stats)
+  
 <!---
 Xemay/Xemay is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
