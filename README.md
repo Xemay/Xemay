@@ -7,8 +7,8 @@
 ### :man_technologist: About Me :
 Hello ✋, I am beginner python developer
 - Working in [AnvilDev team](https://github.com/Anvilteam)
-- Сurrently developing [Floory](https://github.com/Anvilteam/Floory) - discord bot
-- I also plan to study javascript
+- ~~Сurrently developing [Floory](https://github.com/Anvilteam/Floory) **--** discord bot~~
+- Currently learning Rust
 
 ---
 
