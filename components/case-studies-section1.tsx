@@ -26,13 +26,13 @@ const caseStudies = [
       "ada4.png"
     ],
     links: {
-      live: "https://discord.gg/ewSFcePUZR",
+      live: "#",
       github: "#",
     },
   }
 ]
 
-function ImageGallery({ images, contentHeight }: { images: string[], contentHeight: number }) {
+function ImageGallery({ images }: { images: string[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -65,23 +65,18 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
     }
   }, [isFullscreen, goToPrevious, goToNext])
 
-  // Рассчитываем оптимальную высоту для галереи
-  const galleryHeight = Math.max(400, Math.min(600, contentHeight - 100))
-
   return (
     <>
       <div className="relative group">
         {/* Main Image - object-contain to show full image */}
         <div 
-          className="relative rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
-          style={{ height: `${galleryHeight}px` }}
+          className="relative aspect-video rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
           onClick={openFullscreen}
         >
           <Image
             src={images[currentIndex] || "/placeholder.svg"}
             alt={`Project screenshot ${currentIndex + 1}`}
             className="w-full h-full object-contain transition-opacity duration-300"
-            fill
           />
 
           {/* Glass overlay on hover */}
@@ -158,7 +153,6 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
               src={images[currentIndex] || "/placeholder.svg"}
               alt={`Project screenshot ${currentIndex + 1}`}
               className="max-w-full max-h-full object-contain rounded-lg"
-              fill
             />
           </div>
 
@@ -213,23 +207,6 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
 }
 
 export function CaseStudiesSection() {
-  const [contentHeights, setContentHeights] = useState<number[]>([])
-
-  useEffect(() => {
-    const updateHeights = () => {
-      const heights = caseStudies.map((_, index) => {
-        const contentElement = document.querySelector(`[data-case-content="${index}"]`)
-        return contentElement ? contentElement.getBoundingClientRect().height : 400
-      })
-      setContentHeights(heights)
-    }
-
-    updateHeights()
-    window.addEventListener('resize', updateHeights)
-    
-    return () => window.removeEventListener('resize', updateHeights)
-  }, [])
-
   return (
     <section className="relative z-10 px-6 py-20 max-w-6xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Кейсы</h2>
@@ -246,18 +223,11 @@ export function CaseStudiesSection() {
             >
               {/* Image Gallery */}
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <ImageGallery 
-                  images={study.images} 
-                  contentHeight={contentHeights[index] || 400}
-                />
+                <ImageGallery images={study.images} />
               </div>
 
               {/* Content */}
-              <div 
-                className="space-y-6" 
-                style={{ whiteSpace: 'pre-wrap' }}
-                data-case-content={index}
-              >
+              <div className="space-y-6" style={{ whiteSpace: 'pre-wrap' }}>
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
                     {study.title}
@@ -280,14 +250,6 @@ export function CaseStudiesSection() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
-                  <a
-                    href={study.links.live}
-                    className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Ссылка
-                  </a> </div>
               </div>
             </div>
           </article>
@@ -296,3 +258,4 @@ export function CaseStudiesSection() {
     </section>
   )
 }
+

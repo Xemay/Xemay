@@ -8,25 +8,19 @@ const _inter = Inter({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Developer Portfolio | Creative Developer',
-  description: 'Personal portfolio showcasing projects, skills, and case studies of a creative developer.',
-  generator: 'v0.app',
+  title: 'xemay4ik portfolio',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/ava.jpg',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/ava.jpg',
         media: '(prefers-color-scheme: dark)',
       },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
     ],
-    apple: '/apple-icon.png',
+    apple: '/ava.jpg',
   },
 }
 
