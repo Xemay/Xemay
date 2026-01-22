@@ -8,7 +8,7 @@ const nextConfig = {
     unoptimized: true,
   },
   // Раскомментируй строку ниже и замени 'your-repo-name' на имя твоего репозитория
-  // basePath: '/Xemay',
+  basePath: '/Xemay',
 }
 
 export default nextConfig
