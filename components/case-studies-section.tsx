@@ -1,40 +1,71 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { createPortal } from "react-dom"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, X } from "lucide-react"
-import Image from 'next/image'
 
 const caseStudies = [
   {
     id: 1,
-    title: "Adadelta",
-    developer: "xemay4ik",
+    title: "E-Commerce Platform Redesign",
+    developer: "Your Name",
     description:
-      `Точка А\n
-Ранее на сервере использовался стандартный RPG-бот, который работал только для уже вовлечённых игроков. Новички быстро отваливались, потому что не понимали, как играть. Предыдущий бот был ограничен фиксированным списком предметов и не поддерживал кастомные механики. Создатель сервера хотел создать нового бота для полной автоматизации RPG-процессов, внедрения автоматических квестов и инструментов администрирования в Discord.\n
-Точка Б\n
-—Решил проблему ручных расчетов, разработав кастомную систему с автоматической боёвкой, экономикой и квестами.\n
-—Сделал акцент на автоматизированном анкетировании и обучении: бот пошагово вводит новичков в игровой процесс через понятный интерфейс и навигацию.\n
-—Дополнительно я реализовал менеджер-меню для управления игроками и контентом, а бот содержит 100+ команд, объединённых в единую систему.\n
-Результат\n
-В итоге сервер стабильно работает, новички быстрее вовлекаются в игру, активность игроков и удержание выросли, а администрация получила простой и практичный инструмент для управления крупным RPG-проектом без ручной работы.`, 
-    technologies: ["Python", "uv", "Ruff", "MySQL"],
+      "A complete overhaul of an e-commerce platform focusing on user experience and conversion optimization. Implemented a modern design system, improved checkout flow, and integrated real-time inventory management. The project resulted in a 40% increase in conversion rates and significantly improved mobile engagement.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL"],
     images: [
-      "ada1.png",
-      "ada2.png",
-      "ada3.png",
-      "ada4.png"
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
     ],
     links: {
-      live: "https://discord.gg/ewSFcePUZR",
+      live: "#",
       github: "#",
     },
-  }
+  },
+  {
+    id: 2,
+    title: "AI-Powered Analytics Dashboard",
+    developer: "Your Name",
+    description:
+      "Built a comprehensive analytics dashboard with AI-driven insights for data visualization and business intelligence. Features include real-time data streaming, predictive analytics, and customizable reporting tools. Utilized machine learning models for trend prediction and anomaly detection.",
+    technologies: ["React", "Python", "TensorFlow", "D3.js", "AWS"],
+    images: [
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
+    ],
+    links: {
+      live: "#",
+      github: "#",
+    },
+  },
+  {
+    id: 3,
+    title: "Mobile Banking Application",
+    developer: "Your Name",
+    description:
+      "Developed a secure and intuitive mobile banking application with features including biometric authentication, real-time transaction tracking, and peer-to-peer payments. Focused on accessibility and security compliance while maintaining a sleek user interface.",
+    technologies: ["React Native", "Node.js", "MongoDB", "Redis", "OAuth 2.0"],
+    images: [
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
+      "/placeholder.svg?height=400&width=600",
+    ],
+    links: {
+      live: "#",
+      github: "#",
+    },
+  },
 ]
 
-function ImageGallery({ images, contentHeight }: { images: string[], contentHeight: number }) {
+function ImageGallery({ images }: { images: string[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
@@ -56,32 +87,37 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
       if (e.key === "ArrowRight") goToNext()
     }
 
+    // Safari fix: use both properties
     document.body.style.overflow = "hidden"
+    document.body.style.position = "fixed"
+    document.body.style.width = "100%"
+    document.body.style.top = `-${window.scrollY}px`
+    
     window.addEventListener("keydown", handleKeyDown)
 
     return () => {
+      const scrollY = document.body.style.top
       document.body.style.overflow = ""
+      document.body.style.position = ""
+      document.body.style.width = ""
+      document.body.style.top = ""
+      window.scrollTo(0, parseInt(scrollY || "0") * -1)
       window.removeEventListener("keydown", handleKeyDown)
     }
   }, [isFullscreen, goToPrevious, goToNext])
-
-  // Рассчитываем оптимальную высоту для галереи
-  const galleryHeight = Math.max(400, Math.min(600, contentHeight - 100))
 
   return (
     <>
       <div className="relative group">
         {/* Main Image - object-contain to show full image */}
         <div 
-          className="relative rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
-          style={{ height: `${galleryHeight}px` }}
+          className="relative aspect-video rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
           onClick={openFullscreen}
         >
-          <Image
+          <img
             src={images[currentIndex] || "/placeholder.svg"}
             alt={`Project screenshot ${currentIndex + 1}`}
             className="w-full h-full object-contain transition-opacity duration-300"
-            fill
           />
 
           {/* Glass overlay on hover */}
@@ -90,7 +126,7 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
           {/* Click to expand hint */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <span className="glass-card px-3 py-1.5 rounded-lg text-sm text-foreground/80">
-              Нажмите для увеличения
+              Click to expand
             </span>
           </div>
         </div>
@@ -134,16 +170,27 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
         )}
       </div>
 
-      {/* Fullscreen Modal - using z-[9999] to ensure it's above everything */}
-      {isFullscreen && (
+      {/* Fullscreen Modal - using portal and high z-index for Safari compatibility */}
+      {isFullscreen && isMounted && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background/98 backdrop-blur-md"
+          className="fixed inset-0 flex items-center justify-center"
+          style={{
+            zIndex: 99999,
+            backgroundColor: "rgba(6, 6, 15, 0.98)",
+            WebkitBackdropFilter: "blur(12px)",
+            backdropFilter: "blur(12px)",
+          }}
           onClick={closeFullscreen}
         >
           {/* Close button */}
           <button
             onClick={closeFullscreen}
-            className="absolute top-4 right-4 glass-card p-3 rounded-full transition-all duration-300 hover:scale-110 z-10"
+            className="absolute top-4 right-4 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            style={{
+              backgroundColor: "rgba(20, 20, 30, 0.8)",
+              border: "1px solid rgba(60, 60, 80, 0.3)",
+              zIndex: 100000,
+            }}
             aria-label="Close fullscreen"
           >
             <X className="w-6 h-6 text-foreground" />
@@ -151,14 +198,23 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
 
           {/* Fullscreen Image */}
           <div 
-            className="relative w-full h-full flex items-center justify-center p-8"
+            className="relative flex items-center justify-center"
+            style={{
+              width: "100%",
+              height: "100%",
+              padding: "60px 16px 80px",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
+            <img
               src={images[currentIndex] || "/placeholder.svg"}
               alt={`Project screenshot ${currentIndex + 1}`}
-              className="max-w-full max-h-full object-contain rounded-lg"
-              fill
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+                borderRadius: "8px",
+              }}
             />
           </div>
 
@@ -167,14 +223,22 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
             <>
               <button
                 onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 glass-card p-3 rounded-full transition-all duration-300 hover:scale-110"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110"
+                style={{
+                  backgroundColor: "rgba(20, 20, 30, 0.8)",
+                  border: "1px solid rgba(60, 60, 80, 0.3)",
+                }}
                 aria-label="Previous image"
               >
                 <ChevronLeft className="w-6 h-6 text-foreground" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 glass-card p-3 rounded-full transition-all duration-300 hover:scale-110"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110"
+                style={{
+                  backgroundColor: "rgba(20, 20, 30, 0.8)",
+                  border: "1px solid rgba(60, 60, 80, 0.3)",
+                }}
                 aria-label="Next image"
               >
                 <ChevronRight className="w-6 h-6 text-foreground" />
@@ -201,38 +265,32 @@ function ImageGallery({ images, contentHeight }: { images: string[], contentHeig
           )}
 
           {/* Image counter */}
-          <div className="absolute top-4 left-4 glass-card px-4 py-2 rounded-lg">
+          <div 
+            className="absolute top-4 left-4 px-4 py-2 rounded-lg"
+            style={{
+              backgroundColor: "rgba(20, 20, 30, 0.8)",
+              border: "1px solid rgba(60, 60, 80, 0.3)",
+            }}
+          >
             <span className="text-foreground text-sm">
               {currentIndex + 1} / {images.length}
             </span>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   )
 }
 
 export function CaseStudiesSection() {
-  const [contentHeights, setContentHeights] = useState<number[]>([])
-
-  useEffect(() => {
-    const updateHeights = () => {
-      const heights = caseStudies.map((_, index) => {
-        const contentElement = document.querySelector(`[data-case-content="${index}"]`)
-        return contentElement ? contentElement.getBoundingClientRect().height : 400
-      })
-      setContentHeights(heights)
-    }
-
-    updateHeights()
-    window.addEventListener('resize', updateHeights)
-    
-    return () => window.removeEventListener('resize', updateHeights)
-  }, [])
-
   return (
     <section className="relative z-10 px-6 py-20 max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Кейсы</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Case Studies</h2>
+      <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+        Deep dives into selected projects showcasing problem-solving and technical implementation
+      </p>
+
       <div className="space-y-16">
         {caseStudies.map((study, index) => (
           <article
@@ -246,23 +304,19 @@ export function CaseStudiesSection() {
             >
               {/* Image Gallery */}
               <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <ImageGallery 
-                  images={study.images} 
-                  contentHeight={contentHeights[index] || 400}
-                />
+                <ImageGallery images={study.images} />
               </div>
 
               {/* Content */}
-              <div 
-                className="space-y-6" 
-                style={{ whiteSpace: 'pre-wrap' }}
-                data-case-content={index}
-              >
+              <div className="space-y-6">
                 <div>
+                  <p className="text-primary text-sm font-medium mb-2">
+                    by {study.developer}
+                  </p>
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
                     {study.title}
                   </h3>
-                  <p className="leading-relaxed text-pretty">
+                  <p className="text-muted-foreground leading-relaxed text-pretty">
                     {study.description}
                   </p>
                 </div>
@@ -286,8 +340,16 @@ export function CaseStudiesSection() {
                     className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Ссылка
-                  </a> </div>
+                    Live Demo
+                  </a>
+                  <a
+                    href={study.links.github}
+                    className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
+                  >
+                    <Github className="w-4 h-4" />
+                    Source Code
+                  </a>
+                </div>
               </div>
             </div>
           </article>

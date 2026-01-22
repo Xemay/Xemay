@@ -191,3 +191,16 @@
 .skill-badge:hover::before {
   transform: translateX(100%);
 }
+
+@layer utilities {
+  .safari-fix {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass-card {
+    background-color: rgba(20, 20, 20, 0.85);
+  }
+}
