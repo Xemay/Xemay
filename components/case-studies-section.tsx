@@ -262,7 +262,7 @@ export function CaseStudiesSection() {
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
                     {study.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-pretty">
+                  <p className="leading-relaxed text-pretty">
                     {study.description}
                   </p>
                 </div>

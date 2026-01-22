@@ -1,7 +1,14 @@
 import { Github, Linkedin, Twitter, Mail, Globe, Send } from "lucide-react"
 
 const socialLinks = [
-  { icon: Send, href: "https://t.me/xemay4ik", label: "Telegram" },
+  { 
+    icon: Send, 
+    href: "https://t.me/xemay4ik", 
+    label: "Telegram",
+    color: "text-[#229ED9]",
+    glowColor: "oklch(0.8 0.15 220)",
+    bgColor: "bg-[#229ED9]/10"
+  },
 ]
 
 export function HeroSection() {
@@ -48,9 +55,30 @@ export function HeroSection() {
             key={social.label}
             href={social.href}
             aria-label={social.label}
-            className="glass-card glass-card-hover p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
+            className={`
+              relative p-4 rounded-xl transition-all duration-300 
+              hover:scale-110 hover:-translate-y-2 group
+              ${social.bgColor} backdrop-blur-sm
+              border border-[#229ED9]/20
+              shadow-lg hover:shadow-xl
+              hover:shadow-[#229ED9]/20
+            `}
           >
-            <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            {/* Glow effect */}
+            <div
+              className="absolute inset-0 -z-10 rounded-xl blur-lg opacity-0 
+                group-hover:opacity-70 transition-opacity duration-300"
+              style={{
+                background: `radial-gradient(circle, ${social.glowColor} 0%, transparent 70%)`,
+              }}
+            />
+            
+            <social.icon className={`
+              w-6 h-6 transition-all duration-300
+              ${social.color}
+              group-hover:scale-125
+              group-hover:drop-shadow-[0_0_8px_rgba(34,158,217,0.6)]
+            `} />
           </a>
         ))}
       </div>
