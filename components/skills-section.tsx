@@ -8,10 +8,10 @@ export function SkillsSection() {
   return (
     <section className="relative z-10 px-6 py-20 max-w-4xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
-        Skills & Technologies
+        Навыки и технологии
       </h2>
       <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-        Tools and technologies I work with daily
+        Инструменты и технологии с которыми я работаю
       </p>
 
       <div className="glass-card glass-card-hover rounded-2xl p-8 transition-all duration-300">

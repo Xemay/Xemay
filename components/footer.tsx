@@ -8,7 +8,7 @@ export function Footer() {
           <p className="text-muted-foreground flex items-center justify-center gap-2 flex-wrap">
             <span>Designed & Built with</span>
             <Heart className="w-4 h-4 text-primary fill-primary" />
-            <span>by Your Name</span>
+            <span>by xemay4ik</span>
           </p>
           <p className="text-muted-foreground/60 text-sm mt-2">
             © {new Date().getFullYear()} All rights reserved.

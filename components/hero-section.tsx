@@ -1,11 +1,7 @@
-import { Github, Linkedin, Twitter, Mail, Globe } from "lucide-react"
+import { Github, Linkedin, Twitter, Mail, Globe, Send } from "lucide-react"
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Mail, href: "#", label: "Email" },
-  { icon: Globe, href: "#", label: "Website" },
+  { icon: Send, href: "https://t.me/xemay4ik", label: "Telegram" },
 ]
 
 export function HeroSection() {
@@ -17,7 +13,7 @@ export function HeroSection() {
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-muted">
             {/* Avatar placeholder - replace src with actual image */}
             <img
-              src="/placeholder.svg?height=160&width=160"
+              src="/ava.jpg"
               alt="Developer Avatar"
               className="w-full h-full object-cover"
             />
@@ -35,13 +31,13 @@ export function HeroSection() {
       {/* Slogan / Tagline */}
       <div className="text-center mb-8 max-w-2xl">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-foreground">
-          <span className="text-balance">Your Name Here</span>
+          <span className="text-balance">Xemay</span>
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed text-pretty">
           {"Crafting digital experiences that blend creativity with code."}
         </p>
         <p className="mt-4 text-lg text-muted-foreground/70">
-          Full-Stack Developer • UI/UX Enthusiast • Open Source Contributor
+          Python Developer
         </p>
       </div>
 
