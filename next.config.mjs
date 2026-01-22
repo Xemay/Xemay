@@ -7,8 +7,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Раскомментируй строку ниже и замени 'your-repo-name' на имя твоего репозитория
-  basePath: '/Xemay',
+  basePath: '/',
 }
 
 export default nextConfig
