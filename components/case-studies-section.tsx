@@ -1,67 +1,41 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { createPortal } from "react-dom"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, X } from "lucide-react"
 
 const caseStudies = [
   {
     id: 1,
-    title: "E-Commerce Platform Redesign",
-    developer: "Your Name",
+    title: "Adadelta",
+    developer: "xemay4ik",
     description:
-      "A complete overhaul of an e-commerce platform focusing on user experience and conversion optimization. Implemented a modern design system, improved checkout flow, and integrated real-time inventory management. The project resulted in a 40% increase in conversion rates and significantly improved mobile engagement.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL"],
+      `Точка А\n
+Ранее на сервере использовался стандартный RPG-бот, который работал только для уже вовлечённых игроков. Новички быстро отваливались, потому что не понимали, как играть. Предыдущий бот был ограничен фиксированным списком предметов и не поддерживал кастомные механики. Создатель сервера хотел создать нового бота для полной автоматизации RPG-процессов, внедрения автоматических квестов и инструментов администрирования в Discord.\n
+Точка Б\n
+—Решил проблему ручных расчетов, разработав кастомную систему с автоматической боёвкой, экономикой и квестами.\n
+—Сделал акцент на автоматизированном анкетировании и обучении: бот пошагово вводит новичков в игровой процесс через понятный интерфейс и навигацию.\n
+—Дополнительно я реализовал менеджер-меню для управления игроками и контентом, а бот содержит 100+ команд, объединённых в единую систему.\n
+Результат\n
+В итоге сервер стабильно работает, новички быстрее вовлекаются в игру, активность игроков и удержание выросли, а администрация получила простой и практичный инструмент для управления крупным RPG-проектом без ручной работы.`, 
+    technologies: ["Python", "uv", "Ruff", "MySQL"],
     images: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
+      "ada1.png",
+      "ada2.png",
+      "ada3.png",
+      "ada4.png"
     ],
     links: {
-      live: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 2,
-    title: "AI-Powered Analytics Dashboard",
-    developer: "Your Name",
-    description:
-      "Built a comprehensive analytics dashboard with AI-driven insights for data visualization and business intelligence. Features include real-time data streaming, predictive analytics, and customizable reporting tools. Utilized machine learning models for trend prediction and anomaly detection.",
-    technologies: ["React", "Python", "TensorFlow", "D3.js", "AWS"],
-    images: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-    ],
-    links: {
-      live: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 3,
-    title: "Mobile Banking Application",
-    developer: "Your Name",
-    description:
-      "Developed a secure and intuitive mobile banking application with features including biometric authentication, real-time transaction tracking, and peer-to-peer payments. Focused on accessibility and security compliance while maintaining a sleek user interface.",
-    technologies: ["React Native", "Node.js", "MongoDB", "Redis", "OAuth 2.0"],
-    images: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-    ],
-    links: {
-      live: "#",
-      github: "#",
+      live: "https://discord.gg/ewSFcePUZR",
     },
   },
 ]
 
-function ImageGallery({ images }: { images: string[] }) {
+function ImageGallery({ images, contentHeight }: { images: string[], contentHeight: number }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const galleryRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setIsMounted(true)
@@ -106,12 +80,16 @@ function ImageGallery({ images }: { images: string[] }) {
     }
   }, [isFullscreen, goToPrevious, goToNext])
 
+  // Рассчитываем высоту галереи на основе высоты контента
+  const galleryHeight = contentHeight > 0 ? `${Math.min(contentHeight, 600)}px` : '400px'
+
   return (
     <>
-      <div className="relative group">
-        {/* Main Image - object-contain to show full image */}
+      <div className="relative group" ref={galleryRef}>
+        {/* Main Image - адаптивная высота */}
         <div 
-          className="relative aspect-video rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
+          className="relative rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
+          style={{ height: galleryHeight }}
           onClick={openFullscreen}
         >
           <img
@@ -126,7 +104,7 @@ function ImageGallery({ images }: { images: string[] }) {
           {/* Click to expand hint */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <span className="glass-card px-3 py-1.5 rounded-lg text-sm text-foreground/80">
-              Click to expand
+              Нажми для увеличения
             </span>
           </div>
         </div>
@@ -284,76 +262,85 @@ function ImageGallery({ images }: { images: string[] }) {
 }
 
 export function CaseStudiesSection() {
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  // Эффект для расчета высоты контента после рендера
+  useEffect(() => {
+    // Можно добавить ресайз обсервер для адаптивности
+    const handleResize = () => {
+      // Пересчет высоты при изменении размера окна
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <section className="relative z-10 px-6 py-20 max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Case Studies</h2>
-      <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-        Deep dives into selected projects showcasing problem-solving and technical implementation
-      </p>
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Кейсы</h2>
 
       <div className="space-y-16">
-        {caseStudies.map((study, index) => (
-          <article
-            key={study.id}
-            className={`glass-card rounded-3xl p-6 md:p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_20px_60px_oklch(0_0_0/0.4)]`}
-          >
-            <div
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-dense" : ""
-              }`}
+        {caseStudies.map((study, index) => {
+          // Вычисляем высоту контента для текущего кейса
+          const contentHeight = contentRefs.current[index]?.offsetHeight || 0
+          
+          return (
+            <article
+              key={study.id}
+              className={`glass-card rounded-3xl p-6 md:p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_20px_60px_oklch(0_0_0/0.4)]`}
             >
-              {/* Image Gallery */}
-              <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <ImageGallery images={study.images} />
-              </div>
-
-              {/* Content */}
-              <div className="space-y-6">
-                <div>
-                  <p className="text-primary text-sm font-medium mb-2">
-                    by {study.developer}
-                  </p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
-                    {study.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-pretty">
-                    {study.description}
-                  </p>
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-start ${
+                  index % 2 === 1 ? "lg:grid-flow-dense" : ""
+                }`}
+              >
+                {/* Image Gallery */}
+                <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                  <ImageGallery images={study.images} contentHeight={contentHeight} />
                 </div>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {study.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/20"
+                {/* Content */}
+                <div 
+                  ref={el => contentRefs.current[index] = el}
+                  className="space-y-6" 
+                  style={{ whiteSpace: 'pre-wrap' }}
+                >
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
+                      {study.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-pretty">
+                      {study.description}
+                    </p>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2">
+                    {study.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/20"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-4">
+                    <a
+                      href={study.links.live}
+                      className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-4">
-                  <a
-                    href={study.links.live}
-                    className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
-                  <a
-                    href={study.links.github}
-                    className="glass-card glass-card-hover px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 text-foreground"
-                  >
-                    <Github className="w-4 h-4" />
-                    Source Code
-                  </a>
+                      <ExternalLink className="w-4 h-4" />
+                      Ссылка
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          )
+        })}
       </div>
     </section>
   )
