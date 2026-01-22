@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { ExternalLink, Github, ChevronLeft, ChevronRight, X } from "lucide-react"
+import Image from 'next/image'
 
 const caseStudies = [
   {
@@ -65,7 +66,7 @@ function ImageGallery({ images }: { images: string[] }) {
           className="relative aspect-video rounded-xl overflow-hidden bg-muted/30 cursor-pointer"
           onClick={openFullscreen}
         >
-          <img
+          <Image
             src={images[currentIndex] || "/placeholder.svg"}
             alt={`Project screenshot ${currentIndex + 1}`}
             className="w-full h-full object-contain transition-opacity duration-300"
@@ -141,7 +142,7 @@ function ImageGallery({ images }: { images: string[] }) {
             className="relative w-full h-full flex items-center justify-center p-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <Image
               src={images[currentIndex] || "/placeholder.svg"}
               alt={`Project screenshot ${currentIndex + 1}`}
               className="max-w-full max-h-full object-contain rounded-lg"
