@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Nuxt build and generated files
+.nuxt/
+.output/
+.data/
+.nitro/
+dist
+
+# Caches
+.cache/
+.vite/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+
+skills-lock.json
+.agents/
