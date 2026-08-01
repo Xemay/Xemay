@@ -35,7 +35,7 @@ const miniAppFeatures = [
         <article v-reveal class="service-card service-card--website">
           <header class="service-card__header">
             <h3>Сайт для бизнеса</h3>
-            <p class="service-card__price">от 60 000 ₽<span>3-6 недель</span></p>
+            <p class="service-card__price">от 60 000 ₽<span>2-3 недели</span></p>
           </header>
           <p class="service-card__description">
               Собирает в одном месте услугу, примеры работ, ответы на вопросы и понятный путь до заявки.
@@ -74,7 +74,7 @@ const miniAppFeatures = [
             Автоматизирует рутинные действия, отвечает на частые вопросы, принимает оплату.
             <br/>Платформы: Telegram, VK, MAX
           </p>
-          <p class="service-card__price">от 40 000 ₽<span>2-4 недели</span></p>
+          <p class="service-card__price">от 15 000 ₽<span>1-2 недели</span></p>
           <ul class="dash-list">
             <li v-for="feature in botFeatures" :key="feature">{{ feature }}</li>
           </ul>
@@ -85,7 +85,7 @@ const miniAppFeatures = [
           <p class="service-card__description">
             Полноценный интерфейс внутри Telegram, для каталога товаров, личного кабинета.
           </p>
-          <p class="service-card__price">от 80 000 ₽<span>4-8 недель</span></p>
+          <p class="service-card__price">от 40 000 ₽<span>3-4 недели</span></p>
           <ul class="dash-list">
             <li v-for="feature in miniAppFeatures" :key="feature">{{ feature }}</li>
           </ul>
