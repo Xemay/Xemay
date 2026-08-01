@@ -21,9 +21,13 @@
         height="650"
         sizes="350px md:420px lg:480px"
         format="avif,webp"
-        preload
-        fetchpriority="high"
-        :img-attrs="{ class: 'hero__image', loading: 'eager', decoding: 'async' }"
+        :preload="{ fetchPriority: 'high' }"
+        :img-attrs="{
+          class: 'hero__image',
+          loading: 'eager',
+          decoding: 'async',
+          fetchpriority: 'high',
+        }"
       />
     </div>
   </section>

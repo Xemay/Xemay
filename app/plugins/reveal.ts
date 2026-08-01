@@ -7,7 +7,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       target.classList.add('reveal')
 
-      if (binding.value === 'delay') {
+      const revealEarly = binding.value === 'early-delay'
+
+      if (binding.value === 'delay' || revealEarly) {
         target.classList.add('reveal--delay')
       }
 
@@ -22,7 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           target.classList.add('is-visible')
           observer.disconnect()
         },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+        { rootMargin: '0px 0px -8% 0px', threshold: revealEarly ? 0.01 : 0.12 },
       )
 
       observer.observe(target)
