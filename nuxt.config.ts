@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   modules: ['@nuxt/image', '@nuxt/icon', '@nuxt/content'],
-  css: ['@fontsource-variable/inter/wght.css', '~/assets/css/main.css'],
+  css: ['~/assets/css/fonts.css', '~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/privacy'],
+      routes: ['/'],
     },
   },
   typescript: {
