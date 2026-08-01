@@ -7,8 +7,10 @@ const quotes = [
   'stay weird, be different'
 ]
 
-const footerQuote = useState('footer-quote', () => {
-  return quotes[Math.floor(Math.random() * quotes.length)]
+const footerQuote = ref(quotes[0])
+
+onMounted(() => {
+  footerQuote.value = quotes[Math.floor(Math.random() * quotes.length)]
 })
 </script>
 
