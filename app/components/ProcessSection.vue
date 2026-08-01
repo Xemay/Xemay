@@ -21,7 +21,7 @@ const steps = [
   {
     number: '03',
     title: 'Разработка',
-    duration: '2-6 недель',
+    duration: '1-3 недели',
     image: '/images/process-development.png',
     alt: 'Объёмный ноутбук со знаком кода на ярком абстрактном фоне',
     description:
@@ -30,7 +30,7 @@ const steps = [
   {
     number: '04',
     title: 'Запуск',
-    duration: '1 неделя',
+    duration: 'до 1 недели',
     image: '/images/process-launch.png',
     alt: 'Объёмная ракета на ярком абстрактном фоне',
     description:
