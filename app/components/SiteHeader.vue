@@ -62,20 +62,29 @@ function closeMenu() {
       </nav>
     </Transition>
   </header>
+  <div class="site-header__spacer" aria-hidden="true" />
 </template>
 
 <style scoped>
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 20;
+  width: 100%;
   height: var(--header-height);
-  border-bottom: 1px solid rgb(0 0 0 / 0.08);
-  background: rgb(250 250 252 / 0.76);
-  color: var(--ink);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.72);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(5 5 6 / 0.78);
+  color: #f5f5f7;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+}
+
+.site-header__spacer {
+  width: 100%;
+  height: var(--header-height);
+  background: #050506;
 }
 
 .site-header__bar {
@@ -97,7 +106,7 @@ function closeMenu() {
   align-items: center;
   justify-content: center;
   gap: clamp(18px, 2.5vw, 38px);
-  color: #424245;
+  color: #a1a1a6;
   font-size: 13px;
 }
 
@@ -108,7 +117,7 @@ function closeMenu() {
 
 .site-header__desktop-nav a:hover,
 .site-header__brand:hover {
-  color: #111113;
+  color: #ffffff;
 }
 
 .site-header__actions {
@@ -180,7 +189,7 @@ function closeMenu() {
     border: 0;
     padding: 0;
     background: transparent;
-    color: var(--ink);
+    color: #f5f5f7;
     cursor: pointer;
   }
 
@@ -195,12 +204,12 @@ function closeMenu() {
     left: 0;
     display: block;
     width: 100%;
-    border-top: 1px solid rgb(0 0 0 / 0.08);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
     padding-block: 14px 22px;
-    background: rgb(250 250 252 / 0.9);
-    box-shadow: 0 16px 28px rgb(0 0 0 / 0.08);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
+    background: rgb(5 5 6 / 0.86);
+    box-shadow: 0 16px 28px rgb(0 0 0 / 0.3);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
+    backdrop-filter: saturate(180%) blur(22px);
   }
 
   .site-header__mobile-menu .page-shell {
@@ -210,7 +219,7 @@ function closeMenu() {
   .site-header__mobile-menu a {
     min-height: 48px;
     padding-block: 12px;
-    color: #424245;
+    color: #d2d2d7;
   }
 }
 
@@ -242,7 +251,7 @@ function closeMenu() {
 @media (prefers-reduced-transparency: reduce) {
   .site-header,
   .site-header__mobile-menu {
-    background: rgb(250 250 252 / 0.98);
+    background: #050506;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

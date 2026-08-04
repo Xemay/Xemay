@@ -43,8 +43,8 @@ const steps = [
   <section id="process" class="process section-block" aria-labelledby="process-title">
     <div class="page-shell">
       <div v-reveal class="section-heading process__heading">
-        <h2 id="process-title">Вы видите результат на каждом этапе</h2>
-        <p>Проект движется короткими этапами. Всегда на связи, чтобы ответить на любые вопросы.</p>
+        <h2 id="process-title">Как происходит работа со мной</h2>
+        <p>Вы видите результат на каждом этапе. Я всегда на связи, чтобы ответить на любые вопросы.</p>
       </div>
 
       <div class="process__viewport">

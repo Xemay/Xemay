@@ -1,45 +1,38 @@
-<script setup lang="ts">
-useHead({
-  link: [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap',
-    },
-  ],
-})
-</script>
-
 <template>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__strands" aria-hidden="true">
-        <LightRays
-              rays-origin="top-center"
-              rays-color="#3ec6f7"
-              :rays-speed="1.0"
-              :light-spread="2"
-              :ray-length="1"
-              :follow-mouse="false"
-              :mouse-influence="0.1"
-              :noise-amount="0.1"
-              :distortion="0.05"
-              class-name="custom-rays"
-            />
+      <Strands
+      :colors="['#FF4242', '#7C3AED', '#06B6D4', '#EAB308']"
+            :count="3"
+            :speed="0.35"
+            :amplitude="1"
+            :waviness="1"
+            :thickness="0.7"
+            :glow="2.0"
+            :taper="3"
+            :spread="0.4"
+            :intensity="0.5"
+            :saturation="1.5"
+            :opacity="0.5"
+            :scale="2.5"
+            :glass="false"
+            :refraction="1"
+            :dispersion="1"
+            :glass-size="1"
+      />
     </div>
     <div class="hero__glow" aria-hidden="true" />
     <div class="hero__inner page-shell">
       <div class="hero__content">
         <h1 id="hero-title" class="hero__title">
-          Превращаю идею в<br>
-          <span class="hero__title-accent">работающий</span> продукт
+          Цифровые решения для роста бизнеса и личного бренда
         </h1>
         <p class="hero__lead">
-            Проектирую и разрабатываю сайты, Telegram-ботов и Mini Apps, которые решают задачи бизнеса, а не просто выглядят красиво.
+            Разрабатываю сайты, Telegram-ботов и Mini Apps для экспертов и бизнесов.
         </p>
         <div class="hero__actions">
           <TelegramButton />
-          <a class="button button--secondary" href="#cases">Примеры работ</a>
+          <a class="button button--secondary" href="#audit">Получить мини-аудит</a>
         </div>
       </div>
     </div>
@@ -101,18 +94,6 @@ useHead({
   margin-inline: auto;
   font-size: clamp(48px, 4vw, 58px);
   line-height: 1.08;
-}
-
-.hero__title-accent {
-  color: #e1f6ff;
-  font-family: "Inter Tight", Georgia, serif;
-  font-size: 1.05em;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  text-shadow:
-    0 0 18px rgb(91 202 255 / 0.38),
-    0 0 42px rgb(41 151 255 / 0.2);
 }
 
 .hero__lead {
@@ -183,12 +164,8 @@ useHead({
 
   .hero__glow {
     background:
-      radial-gradient(circle at 50% 48%, rgb(51 112 255 / 0.08), transparent 52%),
-      linear-gradient(180deg, rgb(5 5 6 / 0.12), rgb(5 5 6 / 0.34));
-  }
-
-  .hero__strands :deep(.custom-rays) {
-    filter: brightness(1.65) saturate(1.2);
+      radial-gradient(circle at 50% 48%, rgb(51 112 255 / 0.12), transparent 48%),
+      linear-gradient(180deg, rgb(5 5 6 / 0.28), rgb(5 5 6 / 0.52));
   }
 }
 

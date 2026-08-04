@@ -42,8 +42,8 @@ useHead({
       <CasesCarousel />
       <PromiseSection />
       <ProcessSection />
-      <AuditSection />
       <FaqSection />
+      <AuditSection />
       <FinalCta />
     </main>
     <SiteFooter />
