@@ -14,18 +14,7 @@ useHead({
 <template>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__strands" aria-hidden="true">
-        <LightRays
-              rays-origin="top-center"
-              rays-color="#3ec6f7"
-              :rays-speed="1.0"
-              :light-spread="2"
-              :ray-length="1"
-              :follow-mouse="false"
-              :mouse-influence="0.1"
-              :noise-amount="0.1"
-              :distortion="0.05"
-              class-name="custom-rays"
-            />
+
     </div>
     <div class="hero__glow" aria-hidden="true" />
     <div class="hero__inner page-shell">
