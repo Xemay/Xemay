@@ -85,7 +85,7 @@
   width: 100%;
   max-width: 920px;
   text-align: center;
-  animation: hero-enter 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: hero-enter 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
   pointer-events: auto;
 }
 
