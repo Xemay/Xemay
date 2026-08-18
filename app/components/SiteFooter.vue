@@ -4,7 +4,8 @@ const quotes = [
   'Think different.',
   'Long Way Up',
   'Everything is possible when you open your mind',
-  'stay weird, be different'
+  'stay weird, be different',
+  'Be limitless'
 ]
 
 const footerQuote = ref(quotes[0])

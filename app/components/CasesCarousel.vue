@@ -5,13 +5,11 @@ const filters = [
   { label: 'Все работы', value: 'all' },
   { label: 'Сайты', value: 'sites' },
   { label: 'Чат-боты', value: 'bots' },
-  { label: 'Mini Apps', value: 'miniapps' },
 ] as const
 
 const categoryLabels = {
   sites: 'Сайты',
   bots: 'Чат-боты',
-  miniapps: 'Mini Apps',
 } as const
 
 const { data: caseDocuments, error: casesError } = await useAsyncData('portfolio-cases', () => {

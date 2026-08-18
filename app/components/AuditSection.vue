@@ -147,7 +147,7 @@ async function copyMessage() {
         </p>
 
         <button class="button button--primary button--without-icon" type="submit" :disabled="status === 'loading'">
-          {{ status === 'loading' ? 'Готовлю сообщение…' : 'Подготовить сообщение' }}
+          {{ status === 'loading' ? 'Готовлю сообщение…' : 'Получить разбор' }}
         </button>
 
         <div class="audit-form__status" aria-live="polite">

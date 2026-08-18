@@ -17,7 +17,6 @@ if (!caseItem.value) {
 const categoryLabels = {
   sites: 'Сайты',
   bots: 'Чат-боты',
-  miniapps: 'Mini Apps',
 } as const
 
 const categoryLabel = computed(() => {
@@ -393,15 +392,25 @@ useHead(() => ({
 }
 
 .case-page__content :deep(p),
-.case-page__content :deep(ul) {
+.case-page__content :deep(ul),
+.case-page__content :deep(ol) {
   margin: 20px 0 0;
   color: #4b4b50;
 }
 
-.case-page__content :deep(ul) {
+.case-page__content :deep(ul),
+.case-page__content :deep(ol) {
   display: grid;
   gap: 10px;
   padding-left: 22px;
+}
+
+.case-page__content :deep(ul) {
+  list-style: disc;
+}
+
+.case-page__content :deep(ol) {
+  list-style: decimal;
 }
 
 @media (max-width: 640px) {

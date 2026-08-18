@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Сайты, Telegram-боты и Mini Apps для бизнеса | Эльдар Сеттаров',
+  title: 'Сайты и Telegram-боты для бизнеса | Эльдар Сеттаров',
   description:
     'Разработка цифровых продуктов под ключ: от идеи до запуска.',
   ogTitle: 'Эльдар Сеттаров. Сайты и Telegram-продукты для бизнеса',
@@ -43,7 +43,6 @@ useHead({
       <PromiseSection />
       <ProcessSection />
       <FaqSection />
-      <AuditSection />
       <FinalCta />
     </main>
     <SiteFooter />

@@ -31,11 +31,11 @@ useHead({
     <div class="hero__inner page-shell">
       <div class="hero__content">
         <h1 id="hero-title" class="hero__title">
-          Превращаю идею в<br>
-          <span class="hero__title-accent">работающий</span> продукт
+          Сайты для экспертов, которые <br>
+          <span class="hero__title-accent">продают</span> через контент
         </h1>
         <p class="hero__lead">
-            Проектирую и разрабатываю сайты, Telegram-ботов и Mini Apps, которые решают задачи бизнеса, а не просто выглядят красиво.
+            Собираю ваши услуги, кейсы и отзывы в цельную страницу, которая проводит человека от первой встречи до заявки
         </p>
         <div class="hero__actions">
           <TelegramButton />

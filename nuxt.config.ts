@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-07-31',
   ssr: true,
   devtools: { enabled: true },
+  ignore: ['**/HeroSection copy.vue'],
   modules: ['@nuxt/image', '@nuxt/icon', '@nuxt/content'],
   css: ['~/assets/css/fonts.css', '~/assets/css/main.css'],
   vite: {

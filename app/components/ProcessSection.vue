@@ -16,7 +16,7 @@ const steps = [
     image: '/images/process-design.png',
     alt: 'Объёмная кисть и палитра на ярком абстрактном фоне',
     description:
-      'Собираем структуру и показываем ключевые экраны в Figma.',
+      'Собираю структуру и показываю макеты в Figma.',
   },
   {
     number: '03',
@@ -52,7 +52,7 @@ const steps = [
           <article
             v-for="(step, index) in steps"
             :key="step.title"
-            v-reveal="index === 1 ? 'early-delay' : index % 2 ? 'delay' : undefined"
+            v-reveal="index > 0 ? 'early-delay' : undefined"
             class="process-card"
           >
             <div class="process-card__visual">

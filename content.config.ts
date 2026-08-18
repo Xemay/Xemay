@@ -11,7 +11,7 @@ export default defineContentConfig({
       },
       schema: z.object({
         title: z.string(),
-        category: z.enum(['sites', 'bots', 'miniapps']),
+        category: z.enum(['sites', 'bots']),
         description: z.string(),
         link: z.string(),
         image: z.string().optional(),
