@@ -1,16 +1,3 @@
-<script setup lang="ts">
-useHead({
-  link: [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap',
-    },
-  ],
-})
-</script>
-
 <template>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__strands" aria-hidden="true">
@@ -94,7 +81,7 @@ useHead({
 
 .hero__title-accent {
   color: #e1f6ff;
-  font-family: "Inter Tight", Georgia, serif;
+  font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1.05em;
   font-style: italic;
   font-weight: 600;
